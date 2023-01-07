@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Cart from "./Cart";
 import logo from "./images/cartLogo.svg";
-function Nav({ elementsInCart, cart }) {
-  const [vis, setVis] = useState("hidden");
-  function CartManagement() {
-    if (vis === "hidden") setVis("visible"); //if true
-    else setVis("hidden");
-  }
-
+function Nav({ elementsInCart, cart, CartManagement }) {
   return (
     <div className="nav">
       <h2>Logo</h2>
@@ -19,7 +13,7 @@ function Nav({ elementsInCart, cart }) {
         <NavLink to="/shop" className="links">
           Shop
         </NavLink>
-        <button onClick={CartManagement}>
+        <button onClick={() => CartManagement()}>
           <img src={logo} alt="Cart"></img>
           <p
             style={{
@@ -36,7 +30,6 @@ function Nav({ elementsInCart, cart }) {
             {elementsInCart}
           </p>
         </button>
-        <Cart cart={cart} isVisable={vis}></Cart>
       </div>
     </div>
   );

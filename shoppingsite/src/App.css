@@ -24,7 +24,6 @@ h1 {
   font-family: "Poppins", sans-serif;
 }
 #root {
-  min-height: 100vh;
   background-color: rgb(22, 21, 21);
   color: white;
 }
@@ -62,20 +61,31 @@ h1 {
   align-items: center;
   gap: 1.2rem;
 }
+
 .cart {
-  min-height: 100vh;
-  position: absolute;
+  height: 100%;
+  position: fixed;
   top: 0;
   right: 0;
   width: 0px;
   background-color: white;
   z-index: 2;
   transition: all 0.4s;
+  overflow: hidden;
 }
 .slide {
+  /*when the cart opens*/
+  padding: 1rem;
   width: 400px;
-  transition: all 0.5s;
+  transition: all 0.4s;
   color: black;
+}
+.cartElement {
+  display: flex;
+}
+.cartElement > img {
+  width: 30%;
+  height: 30%;
 }
 .links {
   /*for the navLink component*/
@@ -144,7 +154,7 @@ h1 {
 #reviewCardsHolder div:first-child {
   border-right: 2px solid black;
 }
-/**/
+/*Shop*/
 .shop {
   display: grid;
   grid-template: 6fr 1fr / 1fr;
