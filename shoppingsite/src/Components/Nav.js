@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Cart from "./Cart";
 import logo from "./images/cartLogo.svg";
-function Nav(props) {
-  const [vis, setVis] = useState(false);
+function Nav({ elementsInCart, cart }) {
+  const [vis, setVis] = useState("hidden");
   function CartManagement() {
-    if (vis) setVis(false); //if true
-    else setVis(true);
+    if (vis === "hidden") setVis("visible"); //if true
+    else setVis("hidden");
   }
+
   return (
     <div className="nav">
       <h2>Logo</h2>
@@ -20,8 +21,22 @@ function Nav(props) {
         </NavLink>
         <button onClick={CartManagement}>
           <img src={logo} alt="Cart"></img>
+          <p
+            style={{
+              width: "20px",
+              height: "20px",
+              position: "absolute",
+              color: "red",
+              bottom: "-2px",
+              background: "white",
+              borderRadius: "1rem",
+              fontSize: "medium",
+            }}
+          >
+            {elementsInCart}
+          </p>
         </button>
-        <Cart cart={props.cart} isVisable={vis}></Cart>
+        <Cart cart={cart} isVisable={vis}></Cart>
       </div>
     </div>
   );

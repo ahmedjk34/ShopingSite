@@ -6,14 +6,26 @@ import Home from "./Components/Home.js";
 import Shop from "./Components/Shop.js";
 function App() {
   const [cart, setCart] = useState([]);
+  const [elementsInCart, setElementsInCart] = useState(0);
+  function addItem(name, picture, price) {
+    setElementsInCart((prev) => prev + 1);
+    setCart((prev) => [
+      ...prev,
+      { name: name, picture: picture, price: price },
+    ]);
+    console.log(cart);
+  }
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<Nav cart={cart} />}></Route>
+        <Route
+          path="*"
+          element={<Nav elementsInCart={elementsInCart} cart={cart} />}
+        ></Route>
       </Routes>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/shop" element={<Shop setCart={setCart} />}></Route>
+        <Route path="/shop" element={<Shop addItem={addItem} />}></Route>
       </Routes>
     </BrowserRouter>
   );
