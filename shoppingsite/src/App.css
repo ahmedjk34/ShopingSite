@@ -1,38 +1,195 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&family=Righteous&family=Rowdies:wght@300&display=swap");
+/*fonts
+font-family: 'Lobster', cursive;
+font-family: 'Poppins', sans-serif;
+font-family: 'Righteous', cursive;
+font-family: 'Rowdies', cursive
+*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  /*remove styles from anchor tags*/
+  text-decoration: none;
+  color: #fff;
+  font-family: "Ropa Sans" sans-serif sans-serif sans-serif;
+  text-shadow: 1px 1px 1px #000;
 }
-
-.App-header {
-  background-color: #282c34;
+h1 {
+  font-family: "Poppins", sans-serif;
+}
+#root {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: rgb(22, 21, 21);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/*nav bar*/
+.nav {
+  padding: 1.2rem;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5rem;
+  font-family: "Righteous", cursive;
+}
+.nav img {
+  /*cart icon*/
+  width: 30px;
+  height: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav button {
+  /*cart icon*/
+  background: none;
+  outline: none;
+  border: none;
+}
+.nav > div {
+  /*to separate logo and other content*/
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.cart {
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  background-color: red;
+  display: none;
+}
+.links {
+  /*for the navLink component*/
+  font-size: large;
+  color: white;
+}
+/*home*/
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero {
+  background-image: url("./Components/images/background.jpg");
+  background-size: cover;
+  background-position: 50%;
+  height: 80vh;
+
+  display: flex;
+}
+.heroText {
+  padding: 1rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.transparent {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+#reviewCardsHolder {
+  min-height: 40vh;
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  font-family: "Rowdies", cursive;
+}
+.reviewCard {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.reviewCard > img {
+  width: 60px;
+  height: auto;
+  border-radius: 2rem;
+}
+#reviewCardsHolder div:first-child {
+  border-right: 2px solid black;
+}
+/**/
+.shop {
+  display: grid;
+  grid-template: 6fr 1fr / 1fr;
+  place-items: center;
+}
+.shopItemsHolder {
+  display: grid;
+  grid-template: repeat(3, 300px) / repeat(3, 300px);
+}
+.card {
+  width: 275px;
+  height: 275px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 2px solid white;
+  background-color: #000;
+  border-radius: 1rem;
+  box-shadow: 6px 6px 0 white;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  align-items: center;
+  position: relative;
+}
+.card:hover {
+  transition: all 0.4s;
+  transform: scale(1.05);
+}
+.card > img {
+  width: 60%;
+  height: 60%;
+}
+.cardOverlay {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  height: 0%;
+  width: 100%;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  visibility: hidden;
+}
+.card:hover .cardOverlay {
+  transition: all 0.4s;
+  height: 100%;
+  visibility: visible;
+}
+.card button {
+  background: none;
+  outline: none;
+  font-size: large;
+  color: white;
 }
