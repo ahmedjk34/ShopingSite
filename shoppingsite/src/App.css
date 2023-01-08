@@ -5,7 +5,7 @@ font-family: 'Poppins', sans-serif;
 font-family: 'Righteous', cursive;
 font-family: 'Rowdies', cursive
 */
-
+/*general styling*/
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@ a {
 h1 {
   font-family: "Poppins", sans-serif;
 }
-button {
+button:hover {
   cursor: pointer;
 }
 #root {
@@ -34,6 +34,7 @@ button {
   flex-direction: column;
   position: relative;
 }
+
 /*nav bar*/
 .nav {
   padding: 1.2rem;
@@ -49,14 +50,13 @@ button {
   width: 30px;
   height: auto;
 }
-
 .nav button {
-  /*cart icon*/
+  /*remove the button styling*/
   background: none;
   outline: none;
   border: none;
   /*to make the number of elements
-  positioned absolutely*/
+  positioned relative to the icon*/
   position: relative;
 }
 
@@ -75,6 +75,7 @@ button {
   right: 0;
   width: 0px;
   background-color: white;
+  color: black;
   z-index: 1;
   transition: all 0.4s;
   overflow-x: hidden;
@@ -89,7 +90,6 @@ button {
   padding: 1rem;
   width: 400px;
   transition: all 0.4s;
-  color: black;
   overflow-y: scroll;
 }
 .cartElement {
@@ -113,12 +113,13 @@ button {
   gap: 1rem;
 }
 .cartNumbers > button {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background-color: black;
   color: white;
   font-size: large;
   border: 3px solid gold;
+  border-radius: 0.5rem;
 }
 
 .cartElement > div:first-of-type {
@@ -167,7 +168,6 @@ button {
   background-size: cover;
   background-position: 50%;
   height: 80vh;
-
   display: flex;
 }
 .heroText {
@@ -236,7 +236,6 @@ button {
   font-size: large;
   border: 3px solid gold;
   margin-left: 1rem;
-
   font-family: "Righteous", cursive;
 }
 .card {

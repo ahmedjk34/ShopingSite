@@ -5,15 +5,18 @@ import Nav from "./Components/Nav.js";
 import Home from "./Components/Home.js";
 import Shop from "./Components/Shop.js";
 import Cart from "./Components/Cart";
-export default function App() {
+
+function App() {
   const [cart, setCart] = useState([]);
   const [elementsInCart, setElementsInCart] = useState(0);
   const [vis, setVis] = useState("hidden");
+
   function CartManagement() {
     if (vis === "hidden")
       setVis("visible"); //handles cart visibility + animations
     else setVis("hidden");
   }
+
   function addItem(name, picture, price) {
     setElementsInCart((prev) => prev + 1);
     //flag is for making sure that the elements don't duplicate
@@ -33,7 +36,8 @@ export default function App() {
         { name: name, picture: picture, price: price, quantity: 1 },
       ]);
   }
-  //
+
+  //Cart Functionality
   function addItemFromCart(element) {
     setElementsInCart((prev) => prev + 1);
     setCart(
@@ -42,20 +46,20 @@ export default function App() {
       )
     );
   }
+
   function removeItemFromCart(element) {
     //if the quantity is 1 , remove the element
-    if (element.quantity === 1) {
+    if (element.quantity === 1)
       setCart(cart.filter((e) => e.name !== element.name));
-      setElementsInCart((prev) => prev + -1);
-    } //if not , decrease the quantity by 1
-    else {
+    //if not , decrease the quantity by 1
+    else
       setCart(
         cart.map((e) =>
           e.name === element.name ? { ...e, quantity: element.quantity - 1 } : e
         )
       );
-      setElementsInCart((prev) => prev - 1);
-    }
+    //always remove an element from the cart
+    setElementsInCart((prev) => prev - 1);
   }
 
   return (
@@ -67,18 +71,11 @@ export default function App() {
         CartManagement={CartManagement}
         isVisable={vis}
       ></Cart>
-      <Routes>
-        <Route
-          path="*"
-          element={
-            <Nav
-              elementsInCart={elementsInCart}
-              cart={cart}
-              CartManagement={CartManagement}
-            />
-          }
-        ></Route>
-      </Routes>
+      <Nav
+        elementsInCart={elementsInCart}
+        cart={cart}
+        CartManagement={CartManagement}
+      />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/shop" element={<Shop addItem={addItem} />}></Route>
@@ -86,3 +83,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+export default App;

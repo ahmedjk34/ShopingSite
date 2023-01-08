@@ -16,10 +16,7 @@ function Cart({ cart, add, remove, CartManagement, isVisable }) {
     setTotal((prev) => prev.toFixed(2)); //two decimal places
   }, [cart]);
   return (
-    <div
-      className={`cart ${addClass()}`}
-      style={{ visibility: `${isVisable}` }}
-    >
+    <div className={`cart ${addClass()}`}>
       <h1>Your Cart</h1>
       {cart.map((element, index) => (
         <div className="cartElement" key={index}>

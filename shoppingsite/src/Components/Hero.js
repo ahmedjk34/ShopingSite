@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero() {
   return (
-    <div className="hero transparent ">
+    <div className="hero ">
       <div className="transparent">
         <div className="heroText">
           <h1>Text Header</h1>

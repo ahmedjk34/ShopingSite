@@ -5,11 +5,16 @@ import { reviewCardInfo } from "./data/data";
 function randomIndex() {
   return Math.floor(Math.random() * reviewCardInfo.length);
 }
+let prev;
 function renderCard() {
   //each client would have : name , location , review , image , rating
   //TO-DO : add reviews and ratings
-  //To-DO : stop duplication in the review cards
-  const currentElement = reviewCardInfo[randomIndex()];
+  //used prev to stop duplication between cards &&
+  // the same person doesn't appear in the same location
+  let currentIndex = randomIndex();
+  while (prev == currentIndex) currentIndex = randomIndex();
+  prev = currentIndex;
+  const currentElement = reviewCardInfo[currentIndex];
   return (
     <ReviewCard
       name={currentElement.name}
