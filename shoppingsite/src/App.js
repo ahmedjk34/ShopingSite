@@ -5,25 +5,68 @@ import Nav from "./Components/Nav.js";
 import Home from "./Components/Home.js";
 import Shop from "./Components/Shop.js";
 import Cart from "./Components/Cart";
-function App() {
+export default function App() {
   const [cart, setCart] = useState([]);
   const [elementsInCart, setElementsInCart] = useState(0);
   const [vis, setVis] = useState("hidden");
   function CartManagement() {
-    if (vis === "hidden") setVis("visible"); //if true
+    if (vis === "hidden")
+      setVis("visible"); //handles cart visibility + animations
     else setVis("hidden");
   }
   function addItem(name, picture, price) {
     setElementsInCart((prev) => prev + 1);
-    setCart((prev) => [
-      ...prev,
-      { name: name, picture: picture, price: price },
-    ]);
-    console.log(cart);
+    //flag is for making sure that the elements don't duplicate
+    let flag = 1;
+    setCart(
+      cart.map((element) => {
+        if (element.name === name) {
+          flag = 0;
+          return { ...element, quantity: element.quantity + 1 };
+        } else return element;
+      })
+    );
+    //if the element is new , add it
+    if (flag)
+      setCart((prev) => [
+        ...prev,
+        { name: name, picture: picture, price: price, quantity: 1 },
+      ]);
   }
+  //
+  function addItemFromCart(element) {
+    setElementsInCart((prev) => prev + 1);
+    setCart(
+      cart.map((e) =>
+        e.name === element.name ? { ...e, quantity: e.quantity + 1 } : e
+      )
+    );
+  }
+  function removeItemFromCart(element) {
+    //if the quantity is 1 , remove the element
+    if (element.quantity === 1) {
+      setCart(cart.filter((e) => e.name !== element.name));
+      setElementsInCart((prev) => prev + -1);
+    } //if not , decrease the quantity by 1
+    else {
+      setCart(
+        cart.map((e) =>
+          e.name === element.name ? { ...e, quantity: element.quantity - 1 } : e
+        )
+      );
+      setElementsInCart((prev) => prev - 1);
+    }
+  }
+
   return (
     <BrowserRouter>
-      <Cart cart={cart} isVisable={vis}></Cart>
+      <Cart
+        cart={cart}
+        add={addItemFromCart}
+        remove={removeItemFromCart}
+        CartManagement={CartManagement}
+        isVisable={vis}
+      ></Cart>
       <Routes>
         <Route
           path="*"
@@ -43,4 +86,3 @@ function App() {
     </BrowserRouter>
   );
 }
-export default App;
