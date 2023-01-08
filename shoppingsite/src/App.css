@@ -228,6 +228,17 @@ button {
   display: grid;
   grid-template: repeat(3, 300px) / repeat(3, 300px);
 }
+.pageNumbers > button {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  font-size: large;
+  border: 3px solid gold;
+  margin-left: 1rem;
+
+  font-family: "Righteous", cursive;
+}
 .card {
   width: 275px;
   height: 275px;

@@ -21,7 +21,7 @@ function Shop({ addItem }) {
           );
         })}
       </div>
-      <div className="numbers">
+      <div className="pageNumbers">
         <button onClick={() => setPage(0)}>1</button>
         <button onClick={() => setPage(1)}>2</button>
       </div>
