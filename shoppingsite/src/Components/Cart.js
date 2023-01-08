@@ -25,11 +25,15 @@ function Cart({ cart, add, remove, CartManagement, isVisable }) {
         <div className="cartElement" key={index}>
           <img src={require(`${element.picture}`)}></img>
           <div>
-            <h2>{element.name}</h2>
-            <h4>{element.price}</h4>
-            <h5>{element.quantity}</h5>
-            <button onClick={() => add(element)}>+</button>
-            <button onClick={() => remove(element)}>-</button>
+            <div>
+              <h1>{element.name}</h1>
+              <h4>{element.price}</h4>
+            </div>
+            <div className="cartNumbers">
+              <button onClick={() => add(element)}>+</button>
+              <h4>{element.quantity}</h4>
+              <button onClick={() => remove(element)}>-</button>
+            </div>
           </div>
         </div>
       ))}
